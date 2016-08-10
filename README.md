@@ -176,3 +176,19 @@ npm run start
 ```
 
 In browser, go to [http://localhost:8080](http://localhost:8080) and test to see that everything is working.
+
+##Part 2: React Router
+Move your HelloWorld component to a **Main.js** file (Tyler suggests to put it in a **/containers** folder)
+
+```
+```
+
+Set up route configuration file to activate the Main component whenever a user hits the index '/' path of the app:
+
+```
+```
+
+Now instead of rendering to the DOM, render the routes configuration:
+
+```
+```
