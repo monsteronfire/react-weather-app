@@ -198,7 +198,7 @@ cd ../app/components
 touch Main.js
 ```
 
-app/containers/MainContainer.js:
+Remember to leave the render component in the **app/index.js** when moving the container component code to **app/containers/MainContainer.js**:
 
 ```
 var React = require('react');
@@ -228,13 +228,21 @@ var HelloWorld = React.createClass({
   }
 });
 
-ReactDOM.render(
-  <HelloWorld />,
-  document.getElementById('app')
-);
-
 module.exports = HelloWorld;
 
+```
+
+After moving out the HelloWorld code, **app/index.js** should look like this:
+
+```
+var React = require('react');
+var ReactDOM = require('react-dom');
+var routes = require('./config/routes');
+
+ReactDOM.render(
+    routes,
+    document.getElementById('app')
+);
 ```
 
 Create **app/config.routes.js** file:
