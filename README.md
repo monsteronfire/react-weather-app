@@ -3,14 +3,14 @@
 ##Part 1: Hello World Starter App
 Make a new project directory and change into it:
 
-```
+```zsh
 mkdir weather-app
 cd weather-appId
 ```
 
 Make a **.gitignore** file:
 
-```
+```zsh
 touch .gitignore
 ```
 
@@ -32,25 +32,25 @@ Session.vim
 
 Install npm in your project directory
 
-```
+```zsh
 npm init
 ```
 The above command will create a **package.json** file in your project directory.
 
 Next, install the npm dependencies you will need:
 
-```
+```zsh
 npm install --save axios react react-dom react-router
 ```
 
 And install all of the tooling to dev dependencies:
 
-```
+```zsh
 npm install --save-dev babel-core babel-loader babel-preset-react html-webpack-plugin webpack webpack-dev-server
 ```
 Create **.babelrc** file in project directory:
 
-```
+```zsh
 touch .babelrc
 ```
 
@@ -66,13 +66,13 @@ Configure the **.babelrc** file:
 
 Create **webpack.config.js** file in project directory:
 
-```
+```zsh
 touch webpack.config.js
 ```
 
 Configure the **webpack.config.js** file:
 
-```
+```javascript
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
   template: __dirname + '/app/index.html',
@@ -99,20 +99,20 @@ module.exports = {
 
 Create and change to the app directory:
 
-```
+```zsh
 mkdir app
 cd app
 ```
 
 In the app directory, create **index.html**
 
-```
+```zsh
 touch index.html
 ```
 
 Configure **index.html**:
 
-```
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -128,13 +128,13 @@ Configure **index.html**:
 
 Still in the app directory, create **index.js** to render a HelloWorld component:
 
-```
+```zsh
 touch index.js
 ```
 
 Configure index.js
 
-```
+```javascript
 var React = require('react');
 var ReactDOM = require('react-dom');
 
@@ -154,9 +154,9 @@ ReactDOM.render(
 module.exports = HelloWorld;
 ```
 
-Add scripts to **package.json**:
+Add scripts to **package.json**. Webpack was installed locally, which is why we have to prepend the **node_modules/.bin/** to the following scripts:
 
-```
+```json
 "scripts": {
   "production": "webpack -p",
   "build": "node_modules/.bin/webpack",
@@ -166,12 +166,12 @@ Add scripts to **package.json**:
 
 Start webpack:
 
-```
+```zsh
 npm start
 ```
 or
 
-```
+```zsh
 npm run start
 ```
 
@@ -180,7 +180,7 @@ In browser, go to [http://localhost:8080](http://localhost:8080) and test to see
 ##Part 2: React Router
 Set up project folder structure:
 
-```
+```zsh
 mkdir app/components
 mkdir app/config
 mkdir app/containers
@@ -190,14 +190,14 @@ mkdir app/utils
 
 Move your HelloWorld component to a **Main.js** file (Tyler suggests to put it in a **/containers** folder)
 
-```
+```zsh
 cd ../app/containers
 touch Main.js
 ```
 
 Remember to leave the render component in the **app/index.js** when moving the container component code to **app/containers/Main.js**:
 
-```
+```javascript
 //app/components/Main.js
 var React = require('react');
 var ReactDOM = require('react-dom');
@@ -216,7 +216,7 @@ module.exports = HelloWorld;
 
 After moving out the HelloWorld code, **app/index.js** should look like this:
 
-```
+```javasript
 var React = require('react');
 var ReactDOM = require('react-dom');
 var routes = require('./config/routes');
@@ -229,12 +229,12 @@ ReactDOM.render(
 
 Create **app/config.routes.js** file:
 
-```
+```zsh
 touch app/config/routes.js
 ```
 Set up route configuration file to activate the Main component whenever a user hits the index '/' path of the app. Now instead of rendering to the DOM, render the routes configuration:
 
-```
+```javascript
 //app/config/routes.js
 var React = require('react');
 var ReactRouter = require('react-router');
@@ -253,3 +253,54 @@ var routes = (
 
 module.exports = routes;
 ```
+
+##Part 3: Home Component UI
+Create a home component:
+
+```zsh
+touch app/components/Home.js
+```
+
+```javascript
+//app/components/Home.js
+var React = require('react');
+
+var Home = React.createClass({
+  render: function() {
+    return (
+      <div>Home</div>
+    )
+  }
+});
+
+module.exports = Home;
+```
+
+Then set the Home component to the IndexRoute in your route configuration:
+
+```javascript
+//app/config/router.js
+var React = require('react');
+var ReactRouter = require('react-router');
+var Router = ReactRouter.Router;
+var Route = ReactRouter.Route;
+var IndexRoute = ReactRouter.IndexRoute;
+var hashHistory = ReactRouter.hashHistory;
+
+var Main = require('../components/Main');
+var Home = require('../components/Home');
+
+var routes = (
+  <Router history={hashHistory}>
+    <Route path='/' component={Main}>
+      <IndexRoute component={Home} />
+    </Route>
+  </Router>
+);
+
+module.exports = routes;
+```
+
+At this point when you go to [localhost:8080](http://localhost:8080) you should see any UI the Main component spits out as well as any UI the Home component spits out.
+
+Download the full page background image and add it to the Home component as well as the input field and button. [Reference](https://camo.githubusercontent.com/dba13650057ef3677f65f41af4f8b2c521ebd952/687474703a2f2f7777772e72656163746a7370726f6772616d2e636f6d2f696d616765732f686f6d652d75692e706e67) from Tyler McGinnis' README
