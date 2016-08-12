@@ -198,9 +198,70 @@ cd ../app/components
 touch Main.js
 ```
 
+app/containers/MainContainer.js:
+
+```
+var React = require('react');
+
+function MainContainer(props) {
+  return (
+    <div>
+      {props.children}
+    </div>
+  )
+}
+
+module.exports = MainContainer;
+```
+
+app/components/Main.js
+
+```
+var React = require('react');
+var ReactDOM = require('react-dom');
+
+var HelloWorld = React.createClass({
+  render: function() {
+    return (
+      <div>Hello World!</div>
+    )
+  }
+});
+
+ReactDOM.render(
+  <HelloWorld />,
+  document.getElementById('app')
+);
+
+module.exports = HelloWorld;
+
+```
+
+Create **app/config.routes.js** file:
+
+```
+touch app/config/routes.js
+```
 Set up route configuration file to activate the Main component whenever a user hits the index '/' path of the app:
 
 ```
+//app/config/routes.js
+var React = require('react');
+var ReactRouter = require('react-router');
+var Router = ReactRouter.Router;
+var Route = ReactRouter.Route;
+var IndexRoute = ReactRouter.IndexRoute;
+var hashHistory = ReactRouter.hashHistory;
+
+var Main = require('../components/Main');
+
+var routes = (
+  <Router history={hashHistory}>
+    <Route path='/' component={Main}></Route>
+  </Router>
+);
+
+module.exports = routes;
 ```
 
 Now instead of rendering to the DOM, render the routes configuration:
