@@ -191,32 +191,14 @@ mkdir app/utils
 Move your HelloWorld component to a **Main.js** file (Tyler suggests to put it in a **/containers** folder)
 
 ```
-cd app/containers
-touch MainContainer.js
-
-cd ../app/components
+cd ../app/containers
 touch Main.js
 ```
 
-Remember to leave the render component in the **app/index.js** when moving the container component code to **app/containers/MainContainer.js**:
+Remember to leave the render component in the **app/index.js** when moving the container component code to **app/containers/Main.js**:
 
 ```
-var React = require('react');
-
-function MainContainer(props) {
-  return (
-    <div>
-      {props.children}
-    </div>
-  )
-}
-
-module.exports = MainContainer;
-```
-
-app/components/Main.js
-
-```
+//app/components/Main.js
 var React = require('react');
 var ReactDOM = require('react-dom');
 
@@ -261,7 +243,7 @@ var Route = ReactRouter.Route;
 var IndexRoute = ReactRouter.IndexRoute;
 var hashHistory = ReactRouter.hashHistory;
 
-var Main = require('../components/Main');
+var Main = require('../containers/Main');
 
 var routes = (
   <Router history={hashHistory}>
