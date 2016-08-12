@@ -1,5 +1,4 @@
 var React = require('react');
-var ReactDOM = require('react-dom');
 
 var HelloWorld = React.createClass({
   render: function() {
@@ -8,10 +7,5 @@ var HelloWorld = React.createClass({
     )
   }
 });
-
-ReactDOM.render(
-  <HelloWorld />,
-  document.getElementById('app')
-);
 
 module.exports = HelloWorld;

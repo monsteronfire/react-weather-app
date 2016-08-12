@@ -250,7 +250,7 @@ Create **app/config.routes.js** file:
 ```
 touch app/config/routes.js
 ```
-Set up route configuration file to activate the Main component whenever a user hits the index '/' path of the app:
+Set up route configuration file to activate the Main component whenever a user hits the index '/' path of the app. Now instead of rendering to the DOM, render the routes configuration:
 
 ```
 //app/config/routes.js
@@ -265,14 +265,9 @@ var Main = require('../components/Main');
 
 var routes = (
   <Router history={hashHistory}>
-    <Route path='/' component={Main}></Route>
+    <Route path='/' component={Main} />
   </Router>
 );
 
 module.exports = routes;
-```
-
-Now instead of rendering to the DOM, render the routes configuration:
-
-```
 ```
