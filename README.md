@@ -110,7 +110,7 @@ In the app directory, create **index.html**
 touch index.html
 ```
 
-Configure **index.html**:
+Configure **index.html**. Include link to the **bootstrap** stylesheet, too, as it will be used later:
 
 ```html
 <!DOCTYPE html>
@@ -118,6 +118,7 @@ Configure **index.html**:
 <head>
   <meta charset="UTF-8">
   <title>Weather App</title>
+  //Link to bootstrap stylesheet
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 </head>
 <body>
@@ -371,6 +372,22 @@ module.exports = Home;
 ```
 
 Add an input field and button the the **Home component**.
+
+```javascript
+var Home = React.createClass({
+  render: function() {
+    return (
+      <div style={styles.patternBackground}>
+        <div className='col-sm-4 col-sm-offset-4 text-center'>
+          <h1>Enter a City and State</h1>
+          <input className='form-control' placeholder='Suva, Fiji' />
+          <button type='button' className='btn btn-lg btn-success'>Get Weather!</button>
+        </div>
+      </div>
+    )
+  }
+});
+```
 
 The app should now look like the one from [Tyler McGinnis' README](https://github.com/ReactjsProgram/react-fundamentals-curriculum).
 
