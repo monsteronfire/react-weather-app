@@ -346,6 +346,10 @@ var styles = {
   patternBackground: {
     height: '100vh',
     backgroundImage:' url(app/images/pattern.svg)'
+  },
+
+  space: {
+    marginTop: '25px'
   }
 };
 
@@ -380,8 +384,10 @@ var Home = React.createClass({
       <div style={styles.patternBackground}>
         <div className='col-sm-4 col-sm-offset-4 text-center'>
           <h1>Enter a City and State</h1>
-          <input className='form-control' placeholder='Suva, Fiji' />
-          <button type='button' className='btn btn-lg btn-success'>Get Weather!</button>
+          <input className='form-control' placeholder='Suva, Fiji' style={styles.space} />
+          <button type='button' className='btn btn-lg btn-success' style={styles.space}>
+            Get Weather!
+          </button>
         </div>
       </div>
     )
