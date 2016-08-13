@@ -306,7 +306,7 @@ module.exports = routes;
 
 Because the `<IndexRoute />` is embedded within the `<Route>` to the **Main component**, the **Main component** needs to be updated by addding `{this.props.children}`:
 
-```
+```javascript
 var React = require('react');
 
 var Main = React.createClass({
@@ -410,7 +410,7 @@ touch app/main.css
 ```
 Then make it accessible to the app by including it in the **Main container**:
 
-```
+```javascript
 //app/containers/Main.js
 var React = require('react');
 require('../main.css');
@@ -445,7 +445,5 @@ h1 {
 }
 ```
 
-The app should now look like the one from [Tyler McGinnis' README](https://github.com/ReactjsProgram/react-fundamentals-curriculum).
-
-<img src="http://www.reactjsprogram.com/images/home-ui.png" width="400">
-
+##Part 4: Header Component UI
+* Finish the UI for the Header component.
