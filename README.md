@@ -216,7 +216,7 @@ module.exports = HelloWorld;
 
 After moving out the HelloWorld code, **app/index.js** should look like this:
 
-```javasript
+```javascript
 var React = require('react');
 var ReactDOM = require('react-dom');
 var routes = require('./config/routes');
@@ -260,10 +260,12 @@ Create a home component:
 ```zsh
 touch app/components/Home.js
 ```
+Require **React** *and* **React Router**
 
 ```javascript
 //app/components/Home.js
 var React = require('react');
+var ReactRouter = require('react-router');
 
 var Home = React.createClass({
   render: function() {
@@ -299,6 +301,25 @@ var routes = (
 );
 
 module.exports = routes;
+```
+
+Because the `<IndexRoute />` is embedded within the `<Route>` to the **Main component**, the **Main component** needs to be updated by addding `{this.props.children}`:
+
+```
+var React = require('react');
+
+var Main = React.createClass({
+  render: function() {
+    return (
+      <div>Hello Pooper!
+        {this.props.children}
+      </div>
+    )
+  }
+});
+
+module.exports = Main;
+
 ```
 
 At this point when you go to [localhost:8080](http://localhost:8080) you should see any UI the Main component spits out as well as any UI the Home component spits out.

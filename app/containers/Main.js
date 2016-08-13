@@ -1,11 +1,13 @@
 var React = require('react');
 
-var HelloWorld = React.createClass({
+var Main = React.createClass({
   render: function() {
     return (
-      <div>Hello Pooper!</div>
+      <div>Hello Pooper!
+        {this.props.children}
+      </div>
     )
   }
 });
 
-module.exports = HelloWorld;
+module.exports = Main;
