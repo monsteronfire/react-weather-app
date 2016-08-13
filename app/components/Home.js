@@ -1,10 +1,11 @@
 var React = require('react');
 var ReactRouter = require('react-router');
+var styles = require('../styles');
 
 var Home = React.createClass({
   render: function() {
     return (
-      <div>Home!</div>
+      <div style={styles.patternBackground}>Home!</div>
     )
   }
 });

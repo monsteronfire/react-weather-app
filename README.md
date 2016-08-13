@@ -324,4 +324,55 @@ module.exports = Main;
 
 At this point when you go to [localhost:8080](http://localhost:8080) you should see any UI the Main component spits out as well as any UI the Home component spits out.
 
-Download the full page background image and add it to the Home component as well as the input field and button. [Reference](https://camo.githubusercontent.com/dba13650057ef3677f65f41af4f8b2c521ebd952/687474703a2f2f7777772e72656163746a7370726f6772616d2e636f6d2f696d616765732f686f6d652d75692e706e67) from Tyler McGinnis' README
+Download the full page background image and make an **app/images/** directory to put it in
+
+```zsh
+mkdir app/images
+```
+
+Now use the image to give the **Home component** some background styles. First make a styles directory and a file for Home styles:
+
+```zsh
+mkdir app/styles
+touch app/styles/index.js
+```
+
+Declare styles for a **patternBackground**:
+
+```javascript
+//app/styles/index.js
+var styles = {
+  patternBackground: {
+    height: '100vh',
+    backgroundImage:' url(app/images/pattern.svg)'
+  }
+};
+
+module.exports = styles;
+```
+
+Require the styles in the **Home component** and add implement the styles, inline:
+
+```javascript
+var React = require('react');
+var ReactRouter = require('react-router');
+var styles = require('../styles');
+
+var Home = React.createClass({
+  render: function() {
+    return (
+      <div style={styles.patternBackground}>Home!</div>
+    )
+  }
+});
+
+module.exports = Home;
+
+```
+
+Add an input field and button the the **Home component**.
+
+The app should now look like the one from [Tyler McGinnis' README](https://github.com/ReactjsProgram/react-fundamentals-curriculum).
+
+<img src="http://www.reactjsprogram.com/images/home-ui.png" width="400">
+
