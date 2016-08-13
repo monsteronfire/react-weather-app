@@ -1,0 +1,9 @@
+h1 {
+  color: #FFFFFF;
+}
+
+.weather-form-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

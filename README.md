@@ -378,11 +378,12 @@ module.exports = Home;
 Add an input field and button the the **Home component**.
 
 ```javascript
+...
 var Home = React.createClass({
   render: function() {
     return (
-      <div style={styles.patternBackground}>
-        <div className='col-sm-4 col-sm-offset-4 text-center'>
+      <div className='weather-form-wrapper' style={styles.patternBackground}>
+        <div className='col-sm-4 text-center'>
           <h1>Enter a City and State</h1>
           <input className='form-control' placeholder='Suva, Fiji' style={styles.space} />
           <button type='button' className='btn btn-lg btn-success' style={styles.space}>
@@ -393,6 +394,55 @@ var Home = React.createClass({
     )
   }
 });
+...
+```
+
+A global stylesheet can be useful for handling shared styles. By default, React doesn't handle **css** files on its own. So we have to install a **style loader** to do the work. In the terminal, in your project root directory, run the following:
+
+```zsh
+npm install --save-dev css-loader style-loader
+```
+
+Add a **main.css** stylesheet to handle global styles:
+
+```zsh
+touch app/main.css
+```
+Then make it accessible to the app by including it in the **Main container**:
+
+```
+//app/containers/Main.js
+var React = require('react');
+require('../main.css');
+...
+```
+
+We are requiring the **main.css** file as if it's a JavaScript file. Webpack actually makes it possible for you to do this with the following configuration:
+
+```javascript
+//webpack.config.js
+...
+  module: {
+    loaders: [
+      { test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader' },
+      { test: /\.css$/, loader: 'style-loader!css-loader' }
+    ]
+  },
+...
+```
+
+Now make the form vertically centred with some flexbox:
+
+```css
+h1 {
+  color: #FFFFFF;
+}
+
+.weather-form-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 ```
 
 The app should now look like the one from [Tyler McGinnis' README](https://github.com/ReactjsProgram/react-fundamentals-curriculum).
