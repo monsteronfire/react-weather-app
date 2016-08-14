@@ -7,3 +7,7 @@ h1 {
   align-items: center;
   justify-content: center;
 }
+
+.navbar-form input {
+  margin-right: 10px;
+}

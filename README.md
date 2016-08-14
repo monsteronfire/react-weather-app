@@ -447,3 +447,68 @@ h1 {
 
 ##Part 4: Header Component UI
 * Finish the UI for the Header component.
+*
+
+Make a header component:
+
+```zsh
+touch app/components/Header.js
+```
+
+Use a bootstrap header:
+
+```javascript
+var React = require('react');
+
+var Header = React.createClass({
+  render: function() {
+    return (
+      <nav className='nav navbar-default navbar-fixed-top'>
+        <div className='container-fluid'>
+          <div className='navbar-header'>
+            <a className='navbar-brand'>Hello, Weather</a>
+          </div>
+
+          <div className=''>
+            <form className='navbar-form navbar-right'>
+              <div className='form-group'>
+                <input type='text' className='form-control' placeholder='Suva, Fiji' />
+              </div>
+              <button type='submit' className='btn btn-success'>Get Weather</button>
+            </form>
+          </div>
+        </div>
+      </nav>
+    )
+  }
+});
+
+module.exports = Header;
+```
+
+Include it in **app/containers/Main.js**:
+
+```javascript
+var React = require('react');
+var Header = require('../components/Header');
+require('../main.css');
+
+var Main = React.createClass({
+  render: function() {
+    return (
+      <div>
+        <Header />
+        {this.props.children}
+      </div>
+    )
+  }
+});
+
+module.exports = Main;
+```
+
+Add some styles to make it look more like Tyler's example:
+
+```css
+
+```
