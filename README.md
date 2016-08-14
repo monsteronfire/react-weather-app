@@ -463,7 +463,7 @@ var React = require('react');
 var Header = React.createClass({
   render: function() {
     return (
-      <nav className='nav navbar-default navbar-fixed-top'>
+      <nav className='nav navbar-fixed-top'>
         <div className='container-fluid'>
           <div className='navbar-header'>
             <a className='navbar-brand'>Hello, Weather</a>
@@ -510,5 +510,22 @@ module.exports = Main;
 Add some styles to make it look more like Tyler's example:
 
 ```css
+//app/main.css
+...
 
-```
+nav {
+  background-color: #FC6C43;
+}
+
+.navbar-brand {
+  color: #FFFFFF;
+}
+
+.navbar-brand:hover {
+  color: #FFE590;
+}
+
+.navbar-form input {
+  margin-right: 10px;
+}
+	```

@@ -3,7 +3,7 @@ var React = require('react');
 var Header = React.createClass({
   render: function() {
     return (
-      <nav className='nav navbar-default navbar-fixed-top'>
+      <nav className='nav navbar-fixed-top'>
         <div className='container-fluid'>
           <div className='navbar-header'>
             <a className='navbar-brand'>Hello, Weather</a>
