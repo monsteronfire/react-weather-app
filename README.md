@@ -383,7 +383,7 @@ var Home = React.createClass({
   render: function() {
     return (
       <div className='weather-form-wrapper' style={styles.patternBackground}>
-        <form className='col-sm-4 text-center'>
+        <form className='col-sm-3 text-center'>
           <h1>Enter a City and State</h1>
           <input className='form-control' placeholder='Suva, Fiji' style={styles.space} />
           <button type='button' className='btn btn-lg btn-success' style={styles.space}>
@@ -528,4 +528,18 @@ nav {
 .navbar-form input {
   margin-right: 10px;
 }
-	```
+```
+
+##Step 5: Wire up the Weather Button
+[Sign up](https://home.openweathermap.org/users/sign_up) for an API key for the OpenWeatherMap API.
+
+[Axios](https://www.npmjs.com/package/axios) will be used in this section.
+
+###Step Setup
+* Wire up your button to log whatever is in the input field when the button is clicked
+* API endpoints:
+  * Current Weather: http://api.openweathermap.org/data/2.5/weather?q=CITY-NAME&type=accurate&APPID=YOUR-API-KEY
+  * 5 Day Forecast: http://api.openweathermap.org/data/2.5/forecast/daily?q=CITY-NAME&type=accurate&APPID=YOUR-API-KEY&cnt=5
+* Tie up the "Get Weather" button to be able to grab the city's current weather and log it to the console
+* Once the previous step is working, also create the functionality for the 5 day forecast request and test is by hooking it up to the "Get Weather" button. Once it works, change it back to get the current weather.
+* 

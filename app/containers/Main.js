@@ -3,6 +3,10 @@ var Header = require('../components/Header');
 require('../main.css');
 
 var Main = React.createClass({
+  handleGetWeather: function() {
+    console.log('Hello');
+  },
+
   render: function() {
     return (
       <div>
